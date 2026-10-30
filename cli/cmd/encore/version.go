@@ -35,7 +35,7 @@ var versionCmd = &cobra.Command{
 		fmt.Fprintln(os.Stdout, "encore version", version.Version)
 
 		if err != nil {
-			fatalf("could not check for update: %v", err)
+			fmt.Fprintf(os.Stderr, "warning: could not check for update: %v\n", err)
 		} else if ver.IsNewer(version.Version) {
 			if ver.ForceUpgrade {
 				fmt.Println(aurora.Red("An urgent security update for Encore is available."))
